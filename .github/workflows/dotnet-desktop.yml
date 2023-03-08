@@ -50,7 +50,7 @@ jobs:
 
     strategy:
       matrix:
-        configuration: [Debug, Release]
+        configuration: [Debug, Release, Publish-Install, Publish-Portable]
         #build_type : [Publish-Install, Publish-Portable]
         #dotnet-version: ['4.8.0', '6.0.14' ]
 
@@ -91,3 +91,4 @@ jobs:
       run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration 
       env :
         Configuration: ${{ matrix.configuration }}
+    
