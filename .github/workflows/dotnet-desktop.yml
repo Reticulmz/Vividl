@@ -74,5 +74,5 @@ jobs:
         dotnet-version: 6.0.x
 
     - name: Download Depend LiD
-      run: powershell -NoProfile -ExecutionPolicy Unrestricted ./$env:Depend_DownloadScript
+      run: powershell -NoProfile -ExecutionPolicy Unrestricted ./Vividl\Lib\DownloadBinaries.ps1
       shell: cmd
