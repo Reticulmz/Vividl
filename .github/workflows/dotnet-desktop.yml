@@ -61,6 +61,7 @@ jobs:
       Solution_Name: Vividl.sln                          # Replace with your solution name, i.e. MyWpfApp.sln.
       SetupProject_Name : VividlSetup\VividlSetup.vdproj
       Depend_DownloadScript : Vividl\Lib\DownloadBinaries.ps1
+      Devenv_Path : C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\
 
     steps:
     - name: Checkout
@@ -88,7 +89,7 @@ jobs:
       shell: cmd
 
     - name: Build
-      run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration 
+      run: $env:Devenv_Path\devenv.com $env:Solution_Name /Rebuild $env:Configuration
       env :
         Configuration: ${{ matrix.configuration }}
     
