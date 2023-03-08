@@ -83,6 +83,6 @@ jobs:
       shell: cmd
 
     - name: Build
-      run: $env:Devenv_Path Vividl.sln /Rebuild $env:Configuration
+      run: $env:Devenv_Path /Rebuild $env:Configuration
       env :
         Configuration: ${{ matrix.configuration }}
