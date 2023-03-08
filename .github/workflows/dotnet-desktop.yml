@@ -51,6 +51,7 @@ jobs:
     strategy:
       matrix:
         configuration: [Debug, Release]
+        #build_type : [Publish-Install, Publish-Portable]
         #dotnet-version: ['4.8.0', '6.0.14' ]
 
     runs-on: windows-latest  # For a list of available runner types, refer to
@@ -67,12 +68,24 @@ jobs:
       with:
         fetch-depth: 0
 
-    # Install the .NET Core workload
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
 
-    - name: Download Depend LiD
+    # Install the .NET Core workload
+    #- name: Install .NET Core
+    #  uses: actions/setup-dotnet@v3
+    #  with:
+    #    dotnet-version: 6.0.x
+    
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v1
+
+    - name: Restore NuGet packages
+      run: nuget restore $env:Solution_Name
+
+    - name: Download Depend Lib
       run: powershell -NoProfile -ExecutionPolicy Unrestricted ./Vividl\Lib\DownloadBinaries.ps1
       shell: cmd
+
+    - name: Build
+      run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration 
