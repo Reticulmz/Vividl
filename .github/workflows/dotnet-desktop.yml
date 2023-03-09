@@ -30,7 +30,7 @@ jobs:
       run: |
         $url = 'https://marketplace.visualstudio.com/_apis/public/gallery/publishers/VisualStudioClient/vsextensions/MicrosoftVisualStudio2022InstallerProjects/2.0.0/vspackage'
         $path = 'C:\TEMP\InstallerProjects.vsix'
-        Invoke-WebRequest $url -OutFile $path
+        Invoke-WebRequest https://marketplace.visualstudio.com/_apis/public/gallery/publishers/VisualStudioClient/vsextensions/MicrosoftVisualStudio2022InstallerProjects/2.0.0/vspackage -OutFile $path
         & 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\VSIXInstaller.exe' $path
 
     #- name: Add msbuild to PATH
