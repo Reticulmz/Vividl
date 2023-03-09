@@ -52,4 +52,6 @@ jobs:
 
     - name: Devenv Build
       run: |
-        devenv.com Vividl.sln /build '${{ matrix.configuration }}'
+        devenv.com Vividl.sln /build $env:Configuration
+      env:
+        Configuration: ${{ matrix.configuration }}
