@@ -43,11 +43,11 @@ jobs:
 
     - name: Build Portable
       run: |
-        devenv.com Vividl.sln /build Publish-Portable
+        devenv.com Vividl.sln /rebuild Publish-Portable
 
     - name: Build Installer
       run: |
-        devenv.com Vividl.sln /build Publish-Installer
+        devenv.com Vividl.sln /rebuild Publish-Installer
 
     - name: Upload Portable exe
       uses: actions/upload-artifact@v3
