@@ -82,7 +82,7 @@ jobs:
       run: powershell -NoProfile -ExecutionPolicy Unrestricted ./Vividl\Lib\DownloadBinaries.ps1
       shell: cmd
 
-    - name: Build
+    - name: Devenv Build
       run: $env:Devenv_Path $env:Solution_Name /Rebuild $env:Configuration
-      env :
+      env:
         Configuration: ${{ matrix.configuration }}
