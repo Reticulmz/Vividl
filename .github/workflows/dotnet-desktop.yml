@@ -84,7 +84,7 @@ jobs:
 
     - name: Devenv Build
       run: |
-        $env:Devenv_Path $env:Solution_Name /build $env:Configuration
+        "%Devenv_path%" "%Solution_Name%" /build $env:Configuration
       shell: cmd
       env:
         Configuration: ${{ matrix.configuration }}
