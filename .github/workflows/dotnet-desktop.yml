@@ -28,7 +28,7 @@ jobs:
     - name: Install Microsoft Visual Studio Installer Projects
       shell: powershell
       run: |
-        $url = 'https://marketplace.visualstudio.com/_apis/public/gallery/publishers/Microsoft.VSSDKInstallerProjects/vsextensions/InstallerProjects/1.2.8/vspackage'
+        $url = 'https://marketplace.visualstudio.com/_apis/public/gallery/publishers/VisualStudioClient/vsextensions/MicrosoftVisualStudio2022InstallerProjects/2.0.0/vspackage'
         $path = 'C:\TEMP\InstallerProjects.vsix'
         Invoke-WebRequest -Uri $url -OutFile $path
         & 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\VSIXInstaller.exe' $path
