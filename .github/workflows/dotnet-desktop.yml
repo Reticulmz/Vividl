@@ -50,6 +50,6 @@ jobs:
 
     - name: Devenv Build
       run: |
-        "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.com" Vividl.sln /build Publish-Install
+        "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.com" 'Vividl.sln' /build 'Publish-Install'
       env:
         Configuration: ${{ matrix.configuration }}
