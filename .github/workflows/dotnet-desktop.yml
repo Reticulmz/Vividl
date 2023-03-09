@@ -10,20 +10,11 @@ jobs:
 
   build:
 
-    strategy:
-      matrix:
-        configuration: [Debug, Release, Publish-Install, Publish-Portable]
-        #build_type : [Publish-Install, Publish-Portable]
-        #dotnet-version: ['4.8.0', '6.0.14' ]
-
-    runs-on: windows-latest  # For a list of available runner types, refer to
-                            # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    runs-on: windows-latest
 
     env:
-      Solution_Name: Vividl.sln                          # Replace with your solution name, i.e. MyWpfApp.sln.
-      SetupProject_Name: VividlSetup\VividlSetup.vdproj
+      Solution_Name: Vividl.sln
       Depend_DownloadScript: Vividl\Lib\DownloadBinaries.ps1
-      DEVENV_PATH: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.com
 
     steps:
     - name: Checkout
@@ -50,8 +41,22 @@ jobs:
       run: powershell -NoProfile -ExecutionPolicy Unrestricted ./Vividl\Lib\DownloadBinaries.ps1
       shell: cmd
 
-    - name: Devenv Build
+    - name: Build Portable
       run: |
-        devenv.com Vividl.sln /build $env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+        devenv.com Vividl.sln /build Publish-Portable
+
+    - name: Build Installer
+      run: |
+        devenv.com Vividl.sln /build Publish-Portable
+
+    - name: Upload Portable exe
+      uses: actions/upload-artifact@v3
+      with:
+        name: Vividl
+        path: Vividl\bin\Portable\Vividl.exe
+
+    - name: Upload Installer
+      uses: actions/upload-artifact@v3
+      with:
+        name: VividlInstaller
+        path: VividlSetup\Release\VividlSetup.msi
