@@ -83,6 +83,7 @@ jobs:
       shell: cmd
 
     - name: Devenv Build
-      run: $env:Devenv_Path $env:Solution_Name /Rebuild $env:Configuration
+      run: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.com Vividl.sln /Rebuild $env:Configuration
+      shell: cmd
       env:
         Configuration: ${{ matrix.configuration }}
