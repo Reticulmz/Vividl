@@ -47,7 +47,7 @@ jobs:
 
     - name: Build Installer
       run: |
-        devenv.com Vividl.sln /build Publish-Portable
+        devenv.com Vividl.sln /build Publish-Installer
 
     - name: Upload Portable exe
       uses: actions/upload-artifact@v3
