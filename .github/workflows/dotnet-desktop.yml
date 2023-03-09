@@ -34,6 +34,9 @@ jobs:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.1
 
+    - name: Set up MSVC environment
+      run: vcvars64.bat
+
     - name: Setup NuGet
       uses: nuget/setup-nuget@v1
 
@@ -45,8 +48,6 @@ jobs:
       shell: cmd
 
     - name: Devenv Build
-      run: |
-        "%DEVENV_PATH%" "%Solution_Name%" /build $env:Configuration
-      shell: cmd
+      run: devenv.com $env:Solution_Name /Build $env:Configuration
       env:
         Configuration: ${{ matrix.configuration }}
