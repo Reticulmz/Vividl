@@ -50,4 +50,4 @@ jobs:
 
     - name: Devenv Build
       run: |
-        "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.com" 'Vividl.sln' /build '${{ matrix.configuration }}'
+        "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.com"Vividl.sln /build '${{ matrix.configuration }}'
